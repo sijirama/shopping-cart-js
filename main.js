@@ -79,7 +79,7 @@ let increment = (id) => {
         search.item += 1
     }
     // console.log(basket)
-    update()
+    // update()
     updatebutton(id)
 }
 
@@ -92,16 +92,23 @@ let decrement = (id) => {
         basket.splice(indexx, 1)
     }
     // console.log(basket)
-    update()
+    // update()
     updatebutton(id)
-}
-
-let update = () => {
-    cartamount.textContent = `${basket.length}`
 }
 
 let updatebutton = (id) =>{
     const value = document.getElementById(`${id}`)
     let search = basket.find((x) => x.id === id )
-    value.innerHTML = search.item
+    if(search == undefined){
+        value.innerHTML = '0'
+    }else{
+        value.innerHTML = search.item
+        // console.log(search.item)
+    }
+    update()
+}
+
+let update = () => {
+    let value = basket.map((x)=>x.item).reduce((a, b) => a + b, 0)
+    cartamount.textContent = `${value}`
 }
