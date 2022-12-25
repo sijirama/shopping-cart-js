@@ -41,11 +41,61 @@ body{
 .shop{
     display: grid;
     grid-template-columns: repeat(4 , 223px);
+    gap: 30px;
+    justify-content: center;
 }
 
 .item{
     border: 2px solid #264653;
     border-radius: 4px;
+}
 
-    
+.item .details {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+}
+
+.price-quant{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.buttons{
+    display: flex;
+    gap: 8px;  
+    justify-content: space-around;
+}
+
+.bi-plus-lg{
+    color: green;
+}
+
+.bi-dash-lg{
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:1000px) {
+    .shop{
+    grid-template-columns: repeat(2 , 223px);
+    }
+}
+
+
+@media (max-width:500px) {
+    .shop{
+    grid-template-columns: repeat(1 , 223px);
+    }
 }
