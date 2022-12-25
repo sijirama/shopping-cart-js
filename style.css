@@ -15,8 +15,37 @@ body{
     color: white;
     background-color: #264653;
     padding: 15px 50px;
+
+    margin-bottom: 30px;
 }
 
 .cart{
+    position: relative;
+    background-color: white;
+    color: #264653;
+    padding: 7px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.cartamount{
+    position: absolute;
+    top: -13px; right: -10px;
+    font-size: 15px;
+    background-color: red;
+    color: white;
+    padding: 3px;
+    border-radius: 3.5px;
+}
+
+.shop{
+    display: grid;
+    grid-template-columns: repeat(4 , 223px);
+}
+
+.item{
+    border: 2px solid #264653;
+    border-radius: 4px;
+
     
 }
