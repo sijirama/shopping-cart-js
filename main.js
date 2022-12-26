@@ -39,7 +39,7 @@ let shopitemdata = [
 // },
 ]
 
-let basket = []
+let basket = JSON.parse(localStorage.getItem("data")) || []
 
 let generateshop = () => {
     return(shop.innerHTML = shopitemdata.map((x) => {
@@ -78,6 +78,8 @@ let increment = (id) => {
     }else{
         search.item += 1
     }
+
+    localStorage.setItem("data" , JSON.stringify(basket))
     // console.log(basket)
     // update()
     updatebutton(id)
@@ -91,6 +93,8 @@ let decrement = (id) => {
         let indexx = basket.indexOf(search)
         basket.splice(indexx, 1)
     }
+
+    localStorage.setItem("data" , JSON.stringify(basket))
     // console.log(basket)
     // update()
     updatebutton(id)
