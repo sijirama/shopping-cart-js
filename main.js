@@ -42,7 +42,18 @@ let shopitemdata = [
 let basket = JSON.parse(localStorage.getItem("data")) || []
 
 let generateshop = () => {
+
+    //is the basket getting updated? Yes
+    let see = basket
+    console.log(see)
+
     return(shop.innerHTML = shopitemdata.map((x) => {
+
+        let { id, name, price, desc, img} = x 
+        let search = basket.find((z) => z.id === id) || []
+
+        console.log(search)
+
         return(`
         <div id="product-id-${x.id}" class="item">
         <img width="220" src=${x.img} alt="">
@@ -53,7 +64,9 @@ let generateshop = () => {
                 <h2>$${x.price}</h2>
                 <div class="buttons">
                     <i onclick = "increment(${x.id})" class="bi bi-plus-lg"></i>
-                    <div id=${x.id} class="quantity">0</div>
+                    <div id=${x.id} class="quantity">
+                    ${search.item === undefined? "undef": search.item}
+                    </div>
                     <i onclick = "decrement(${x.id})" class="bi bi-dash-lg"></i>
                 </div>
             </div>
@@ -80,6 +93,7 @@ let increment = (id) => {
     }
 
     localStorage.setItem("data" , JSON.stringify(basket))
+
     // console.log(basket)
     // update()
     updatebutton(id)
@@ -110,8 +124,10 @@ let updatebutton = (id) =>{
         // console.log(search.item)
     }
     update()
+    
 }
 
+// Update the cart amount carton (Top right.)
 let update = () => {
     let value = basket.map((x)=>x.item).reduce((a, b) => a + b, 0)
     cartamount.textContent = `${value}`
