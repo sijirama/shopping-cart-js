@@ -23,7 +23,7 @@ a{
     color: white;
     background-color: #264653;
     padding: 15px 50px;
-
+    align-items: center;
     margin-bottom: 30px;
 }
 
@@ -51,6 +51,7 @@ a{
     grid-template-columns: repeat(4 , 223px);
     gap: 30px;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .item{
@@ -91,7 +92,7 @@ a{
     margin-bottom:20px ;
 }
 
-.HomeBtn{
+.HomeBtn, .checkout, .clearcart{
     padding: 6px;
     margin: 10px;
     background: #264653;
@@ -99,6 +100,14 @@ a{
     border: none;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.checkout{
+    background: green;
+}
+
+.clearcart{
+    background: red;
 }
 
 .bi-x-lg{

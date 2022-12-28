@@ -9,7 +9,6 @@ let update = () => {
 }
 update()
 
-
 let generatecarditems = () =>{
     
     //cart is not empty
@@ -75,9 +74,6 @@ let generatecarditems = () =>{
 
 generatecarditems()
 
-
-
-
 let increment = (id) => { 
     let search = basket.find((x)=> x.id === id)
     if(search === undefined){
@@ -95,6 +91,7 @@ let increment = (id) => {
 
     generatecarditems()
     updatebutton(id)
+    totalamount()
 }
 
 let decrement = (id) => {
@@ -113,6 +110,7 @@ let decrement = (id) => {
 
     generatecarditems()
     updatebutton(id)
+    totalamount()
 }
 
 let updatebutton = (id) =>{
@@ -131,4 +129,37 @@ let deleteitem  = (id) =>{
     basket = basket.filter((x) => x.id !== id)
     localStorage.setItem("data" , JSON.stringify(basket))
     generatecarditems()
+    totalamount()
+    update()
 }
+
+let clearcart = () => {
+    basket = []
+    generatecarditems()
+    update()
+    localStorage.setItem("data" , JSON.stringify(basket))
+}
+
+let checkoutfunc = () => {
+
+}
+
+let totalamount = () => {
+    if (basket.length !== 0){
+        let amount = basket.map((x) => {
+            let {item , id} = x
+            let search = shopitemdata.find((y) => y.id == id) || []
+
+            return item * search.price
+        }).reduce((a, b) => a + b, 0)
+
+        
+        label.innerHTML = `
+        <h2>Total Bill: $${amount}</h2>
+        <button onclick = "checkoutfunc()" class="checkout" >Checkout</button>
+        <button onclick = "clearcart()" class="clearcart">Clear Cart</button> 
+        `
+    }
+    else{}
+}
+totalamount()
